@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детский консультант | Педиатр-неонатолог с 9-летним опытом</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4e54c8;
+            --secondary: #8f94fb;
+            --accent: #ff6b8b;
+            --light: #f8f9ff;
+            --dark: #2d2b55;
+            --text: #333366;
+            --success: #4CAF50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        /* Герой секция */
+        .hero {
+            background: linear-gradient(135deg, rgba(78,84,200,0.9) 0%, rgba(143,148,251,0.9) 100%), url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .experience-badge {
+            background-color: var(--accent);
+            color: white;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        /* Обо мне */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Услуги */
+        .services {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e7ff 100%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Форма записи */
+        .booking {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .booking-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8f9ff 0%, #eef0ff 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(78,84,200,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(78,84,200,0.1);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input {
+            margin-right: 8px;
+        }
+        
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #3d3a7e 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary);
+            width: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                background-color: rgba(255,255,255,0.1);
+                border-radius: 10px;
+                padding: 15px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .booking-form {
+                padding: 25px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+            
+            .booking-form {
+                padding: 20px;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .modal-title {
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .direct-contact {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border-left: 4px solid var(--accent);
+        }
+
+        .direct-contact a {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .direct-contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-baby"></i>
+                    ДетскийКонсалт
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#booking">Запись</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <section class="hero">
+        <div class="container fade-in">
+            <h1>Консультации педиатра-неонатолога</h1>
+            <p>Индивидуальный подбор смесей, ответы на вопросы и профессиональная помощь для здоровья вашего ребенка</p>
+            <div class="experience-badge">9 лет успешной практики</div>
+            <a href="#booking" class="btn btn-accent">Записаться на консультацию</a>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Педиатр-неонатолог с 9-летним опытом</h3>
+                    <p>Я специализируюсь на консультациях для детей, индивидуальном подборе смесей и решении различных вопросов, связанных со здоровьем и развитием малышей.</p>
+                    <p>Мой профессиональный опыт позволяет точно определить потребности каждого ребенка и подобрать оптимальное решение для его питания и ухода.</p>
+                    <p>Консультирую онлайн и оффлайн в городах Кизилюрт и Хасавюрт, а также дистанционно по всей России.</p>
+                    <p>Моя цель - помочь родителям обеспечить здоровое развитие их детей, предоставляя профессиональные рекомендации и поддержку.</p>
+                </div>
+                <div class="about-image">
+                    <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-user-md" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                            <p>Ваше фото</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Мои услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-prescription-bottle"></i>
+                    </div>
+                    <h3>Индивидуальный подбор смесей</h3>
+                    <p>Профессиональный подбор оптимальной молочной смеси с учетом особенностей вашего ребенка</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Консультации педиатра</h3>
+                    <p>Ответы на вопросы о здоровье, развитии и уходе за ребенком любого возраста</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-medical"></i>
+                    </div>
+                    <h3>Онлайн-консультации</h3>
+                    <p>Удобные консультации по видеосвязи из любого места в удобное для вас время</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Оффлайн-прием</h3>
+                    <p>Личные консультации в городах Кизилюрт и Хасавюрт</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма записи -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <h2 class="section-title">Запись на консультацию</h2>
+            <div class="booking-form">
+                <form id="consultation-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="child-age-years">Возраст ребенка (лет)</label>
+                            <input type="number" id="child-age-years" class="form-control" min="0" max="12">
+                        </div>
+                        <div class="form-group">
+                            <label for="child-age-months">Возраст ребенка (мес.)</label>
+                            <input type="number" id="child-age-months" class="form-control" min="0" max="11">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="child-number">Какой ребенок по счету? *</label>
+                        <input type="number" id="child-number" class="form-control" min="1" max="10" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Есть ли хронические заболевания? *</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="disease-yes" name="chronic-disease" value="yes" required>
+                                <label for="disease-yes">Да</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="disease-no" name="chronic-disease" value="no" required>
+                                <label for="disease-no">Нет</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="problem">Опишите причину обращения *</label>
+                        <textarea id="problem" class="form-control" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent" style="width: 100%;" id="submit-btn">
+                        Записаться на консультацию
+                    </button>
+
+                    <div class="direct-contact">
+                        <p>Или свяжитесь напрямую:</p>
+                        <p>
+                            <a href="https://t.me/ваш_телеграм" target="_blank">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </a> | 
+                            <a href="https://wa.me/79999999999" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a> | 
+                            <a href="tel:+79999999999">
+                                <i class="fas fa-phone"></i> +7 (999) 999-99-99
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ДетскийКонсалт</h3>
+                    <p>Профессиональные консультации педиатра-неонатолога с 9-летним опытом</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+7 (999) 999-99-99</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@detskiy-konsult.ru</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Кизилюрт, Хасавюрт</span>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#booking">Запись на консультацию</a></li>
+                        <li><a href="#">Отзывы</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 ДетскийКонсалт. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно успешной отправки -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 class="modal-title">Спасибо за заявку!</h3>
+            <p>Мы свяжемся с вами в ближайшее время для подтверждения записи на консультацию.</p>
+            <button class="btn btn-accent" style="margin-top: 20px; width: 100%;" id="modal-close-btn">Хорошо</button>
+        </div>
+    </div>
+
+    <script>
+        // Конфигурация Telegram бота
+        const TELEGRAM_BOT_TOKEN = '7632395596:AAFkY2Qjsjt_kSOZLLjDAr1UT9HmbBLa7Fs';
+        const TELEGRAM_CHAT_ID = '736751157';
+        
+        // Мобильное меню
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        
+        // Закрытие мобильного меню при клике на ссылку
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+        
+        // Обработка формы
+        document.getElementById('consultation-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Собираем данные формы
+            const formData = {
+                name: document.getElementById('name').value,
+                childAgeYears: document.getElementById('child-age-years').value || '0',
+                childAgeMonths: document.getElementById('child-age-months').value || '0',
+                childNumber: document.getElementById('child-number').value,
+                chronicDisease: document.querySelector('input[name="chronic-disease"]:checked').value,
+                problem: document.getElementById('problem').value,
+                timestamp: new Date().toLocaleString('ru-RU')
+            };
+            
+            // Валидация формы
+            if (!formData.name || !formData.childNumber || !formData.problem) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
+            
+            // Отправляем в Telegram через прокси
+            await sendToTelegram(formData);
+        });
+        
+        // Функция отправки в Telegram через прокси
+        async function sendToTelegram(formData) {
+            const submitBtn = document.getElementById('submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            try {
+                // Показываем индикатор загрузки
+                submitBtn.innerHTML = '<div class="loading"></div> Отправка...';
+                submitBtn.disabled = true;
+                
+                // Форматируем сообщение
+                const message = `
+🎯 НОВАЯ ЗАЯВКА НА КОНСУЛЬТАЦИЮ
+
+👤 Имя: ${formData.name}
+👶 Возраст ребенка: ${formData.childAgeYears} лет ${formData.childAgeMonths} мес.
+🔢 Ребенок по счету: ${formData.childNumber}
+🏥 Хронические заболевания: ${formData.chronicDisease === 'yes' ? 'Да' : 'Нет'}
+📝 Причина обращения:
+${formData.problem}
+
+⏰ Время заявки: ${formData.timestamp}
+                `;
+                
+                // Используем FormData для обхода CORS
+                const formDataToSend = new FormData();
+                formDataToSend.append('chat_id', TELEGRAM_CHAT_ID);
+                formDataToSend.append('text', message);
+                
+                // Отправляем запрос к Telegram API через прокси
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    body: formDataToSend
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.ok) {
+                        // Успешная отправка
+                        document.getElementById('success-modal').style.display = 'flex';
+                        document.getElementById('consultation-form').reset();
+                    } else {
+                        throw new Error(result.description || 'Неизвестная ошибка Telegram');
+                    }
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+            } catch (error) {
+                console.error('Ошибка отправки:', error);
+                alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую через указанные контакты.');
+            } finally {
+                // Восстанавливаем кнопку
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+        
+        // Закрытие модального окна
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('success-modal').style.display = 'none';
+        });
+        
+        document.getElementById('modal-close-btn').addEventListener('click', function() {
+            document.getElementById('success-modal').style.display = 'none';
+        });
+        
+        // Закрытие модального окна при клике вне его
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('success-modal')) {
+                document.getElementById('success-modal').style.display = 'none';
+            }
+        });
+        
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.about-content, .services-grid, .booking-form').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
